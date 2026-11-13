@@ -40,6 +40,7 @@ Open **http://localhost:8000**. No build step, API key or backend is required. G
 | Jump | W / up / Space | Jump |
 | Combo | Hold J or K | Hold Slash |
 | Dash | Shift or L | Dash |
+| Moonfall ultimate | U | Moonfall (after level 3) |
 | Pause | Escape | Switching away pauses |
 
 An exclamation mark signals an enemy preparing to strike. Dash during the warning and counter before the enemy recovers.
@@ -56,7 +57,7 @@ An exclamation mark signals an enemy preparing to strike. Dash during the warnin
 
 The canvas renders at **960 × 540**, independently of its displayed size. `loop()` computes a capped elapsed time, calls `update()` for simulation and `render()` for drawing. `start()` initializes a chapter; `nextWave()` creates its opponents. `slash()`, `jump()` and `dash()` update player actions. Enemy attack windups are evaluated in `update()`. Rendering helpers draw scenery and articulated fighters directly to Canvas 2D.
 
-The code is enclosed in an immediately invoked function to avoid global variables. Comments explain each system. Local storage uses `samurexile-v2`: it stores the current level and completion, not individual fights, score or health. Reloading starts at the level checkpoint. Browser storage may be unavailable in restricted contexts; the game still runs without persistence.
+The code is enclosed in an immediately invoked function to avoid global variables. Comments explain each system. Local storage uses the permanent `samurexile-save` key and schema version 1. Older saves migrate automatically. The save retains the current level, highest unlocked level, completion, ultimate unlock and viewed cutscenes. Reloading starts at the level checkpoint. Browser storage may be unavailable in restricted contexts; the game still runs without persistence.
 
 ## Scope and validation
 
@@ -90,3 +91,17 @@ All environments use the original muted indigo, warm lantern light, geometric si
 Enemy uniforms follow the local palette; Ren retains his blue robes and red scarf for easy recognition. Snow and ember particles are decorative. The ten settings are authored procedural artwork, reused with decorative variations across their 50 levels.
 
 Review checks rendered all 500 backgrounds and exercised combo damage, dash timing, level transitions and final completion saving. These checks do not replace playtesting on physical mobile devices.
+
+## Moonfall and story interludes
+
+Clear level 3 to permanently unlock **Moonfall**. Press **U** or tap its touch button when the gold meter is full. A sheath, dash-afterimage sequence and sweeping slash deliver one impact: 6 damage to ordinary enemies or 8 to bosses. It starts charged each level and recovers 8 charge per successful sword hit. Enemies are suspended during its 2.2-second animation.
+
+Ten eight-second, skippable cutscenes follow levels **3, 50, 100, 150, 200, 250, 300, 350, 400 and 500**. Their camera movement, character art, lanterns and moon effects use the same procedural drawing language as the levels. Viewed cutscenes are recorded; replaying those levels also replays their scenes.
+
+## Saves and updates
+
+The permanent schema is documented in [SAVE_FORMAT.md](SAVE_FORMAT.md). The **Save** button exports a portable JSON backup or imports a validated one. Ordinary content updates must preserve key names and the meaning of level IDs. Existing `samurexile-v2` and `shadow-exile-save-v1` records are retained and migrated. Newer unsupported schemas are preserved without overwriting them.
+
+Browser storage still belongs to that browser and site origin: clearing it or changing devices requires your exported backup. This format protects against update-related data loss; it cannot protect against browser data being removed.
+
+Run the dependency-free regression checks with `node tests/campaign.cjs`. They cover all 500 transitions, the ultimate unlock and impact, cutscene count, old-save migration and the stable schema.
