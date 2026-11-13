@@ -1,0 +1,308 @@
+/* Layout, retro styling, safe areas and touch-screen adaptations. */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+  * {
+  box-sizing:border-box}
+body {
+  margin:0;
+  color:#eadfca;
+  background:#100e16;
+  font-family:'VT323',monospace;
+  min-height:100dvh}
+button {
+  font:inherit;
+  cursor:pointer;
+  touch-action:manipulation}
+.shell {
+  max-width:1050px;
+  margin:auto;
+  padding:20px 22px}
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:2px solid #38303a;
+  padding-bottom:15px}
+.logo {
+  font-family:'Press Start 2P',monospace;
+  font-size:12px;
+  line-height:1.6;
+  letter-spacing:-.05em}
+.logo span {
+  color:#d9544f}
+.topright {
+  font-size:17px;
+  letter-spacing:2px;
+  color:#8c7c80}
+.heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin:22px 0 12px}
+.eyebrow {
+  color:#db8a70;
+  font-size:17px;
+  letter-spacing:3px;
+  text-transform:uppercase}
+.heading h1 {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(16px,2.7vw,25px);
+  margin:7px 0 0;
+  line-height:1.45}
+.chapter {
+  color:#b9a5a1;
+  font-size:20px}
+.screen {
+  position:relative;
+  border:6px solid #40363b;
+  box-shadow:0 0 0 2px #17131a,0 18px 80px #0008;
+  background:#171524}
+canvas {
+  width:100%;
+  height:auto;
+  display:block;
+  image-rendering:pixelated;
+  aspect-ratio: 16/9;
+  touch-action:none}
+.overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(16,14,22,.94),rgba(16,14,22,.8));
+  display:flex;
+  align-items:center;
+  padding:6% 9%}
+.overlay.hidden {
+  display:none}
+.overlay-content {
+  max-width:620px}
+.overlay .label {
+  color:#ed9a76;
+  font-size:20px;
+  letter-spacing:4px}
+.overlay h2 {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(17px,3vw,29px);
+  line-height:1.6;
+  margin:12px 0;
+  color:#f5e5cf}
+.overlay p {
+  font-size:clamp(19px,2.4vw,27px);
+  line-height:1.12;
+  color:#c9b8aa;
+  margin:0 0 20px;
+  max-width:580px}
+.primary {
+  background:#d05a4e;
+  color:#fff2df;
+  border:0;
+  border-bottom:4px solid #7c302f;
+  padding:11px 22px;
+  font-family:'Press Start 2P',monospace;
+  font-size:11px;
+  min-height:45px}
+.primary:hover {
+  background:#e87561}
+.hud {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:12px;
+  align-items:center;
+  color:#ac9c94;
+  font-size:18px}
+.hud strong {
+  color:#ead9bd;
+  font-weight:normal}
+.sidebuttons {
+  display:flex;
+  gap:6px}
+.small {
+  background:none;
+  border:1px solid #514149;
+  color:#cdbbb1;
+  padding:6px 10px;
+  font-size:15px;
+  letter-spacing:1px}
+.small:hover {
+  color:#fff}
+.controls {
+  display:none;
+  margin:15px 0 0;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  user-select:none;
+  -webkit-user-select:none}
+.touch-mode .controls {
+  display:flex}
+.pad,.act {
+  display:flex;
+  gap:8px}
+.controls button {
+  width:62px;
+  height:58px;
+  border:2px solid #7c6264;
+  border-bottom:5px solid #49383e;
+  background:#2c242e;
+  color:#f8e8d4;
+  font-size:28px;
+  border-radius:4px;
+  touch-action:none}
+.controls button:active {
+  background:#695050}
+.act button {
+  font-size:19px;
+  width:72px}
+.act .attack {
+  background:#8f3939;
+  border-color:#d56e61}
+.footer {
+  border-top:1px solid #3c3038;
+  margin-top:22px;
+  padding-top:14px;
+  color:#8d7d7c;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:17px}
+.key {
+  color:#ead3b9}
+.mobilehint {
+  display:none}
+.touch-mode .deskhint {
+  display:none}
+.touch-mode .mobilehint {
+  display:inline}
+@media(max-width:600px) {
+  .shell {
+  padding:14px 12px}
+.topright {
+  font-size:13px}
+.logo {
+  font-size:9px}
+.heading {
+  margin-top:18px}
+.chapter {
+  font-size:15px}
+.screen {
+  border-width:4px}
+.overlay {
+  padding:5% 7%}
+.overlay h2 {
+  font-size:16px;
+  margin:6px 0}
+.overlay p {
+  font-size:18px;
+  margin-bottom:10px}
+.overlay .label {
+  font-size:14px}
+.primary {
+  font-size:9px;
+  min-height:36px;
+  padding:8px 12px}
+.hud {
+  font-size:15px}
+.footer {
+  font-size:14px}
+.controls button {
+  width:56px;
+  height:52px}
+.act button {
+  width:65px}
+}
+
+
+/* Keep the entire game inside the visible, safe portion of mobile screens. */
+@media (pointer:coarse)  {
+   .shell  {
+  padding-left:max(12px,env(safe-area-inset-left));
+  padding-right:max(12px,env(safe-area-inset-right));
+  padding-bottom:max(10px,env(safe-area-inset-bottom));
+  }
+ .overlay {
+  overflow-y:auto;
+  align-items:safe center}
+ .overlay-content {
+  padding:8px 0}
+ }
+
+@media (pointer:coarse) and (orientation:landscape) and (max-height:600px)  {
+  
+ body {
+  height:100dvh;
+  overflow:hidden}
+ .shell {
+  height:100dvh;
+  max-width:none;
+  padding-top:max(4px,env(safe-area-inset-top));
+  padding-bottom:max(4px,env(safe-area-inset-bottom));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px}
+ header,.heading,.footer {
+  display:none}
+ .screen {
+  width:min(100%,calc((100dvh - 92px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 16 / 9));
+  max-height:calc(100dvh - 92px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  aspect-ratio:16/9;
+  flex:none;
+  border-width:3px}
+ canvas {
+  height:100%;
+  width:100%}
+ .hud {
+  width:100%;
+  margin:0;
+  min-height:23px;
+  font-size:14px;
+  line-height:1}
+.hud .small {
+  padding:3px 7px;
+  font-size:13px}
+.controls {
+  width:100%;
+  margin:0;
+  flex:none}
+.controls button {
+  height:48px;
+  width:58px;
+  font-size:23px}
+.controls .act button {
+  width:65px;
+  font-size:17px}
+.overlay {
+  padding:3% 6%}
+.overlay h2 {
+  font-size:clamp(12px,2.6vh,19px);
+  margin:5px 0;
+  line-height:1.4}
+.overlay p {
+  font-size:clamp(15px,4.6vh,22px);
+  line-height:1.05;
+  margin:0 0 7px}
+.overlay .label {
+  font-size:14px}
+.primary {
+  min-height:32px;
+  padding:7px 12px;
+  font-size:9px}
+
+}
+
+@media (pointer:coarse) and (orientation:portrait) {
+  .overlay h2 {
+  font-size:clamp(12px,4vw,19px)}
+.overlay p {
+  font-size:clamp(15px,4vw,21px);
+  line-height:1.05}
+.overlay .label {
+  font-size:14px}
+.primary {
+  font-size:9px;
+  min-height:34px;
+  padding:7px 12px}
+}
+
+/* Expanded action row: retain room for three actions on small phones. */
+.controls .act{gap:5px}.controls .act button{width:58px;font-size:15px}.controls .pad{gap:5px}.controls .pad button{width:46px}.screen{box-shadow:0 0 0 1px #a18560,0 20px 70px #0008}.overlay{background:linear-gradient(90deg,#101923f5,#101923c9)}.primary{background:#b36951;border-bottom-color:#693d35}.heading .eyebrow{color:#dab481}
