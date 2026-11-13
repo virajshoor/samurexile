@@ -306,3 +306,6 @@ canvas {
 
 /* Expanded action row: retain room for three actions on small phones. */
 .controls .act{gap:5px}.controls .act button{width:58px;font-size:15px}.controls .pad{gap:5px}.controls .pad button{width:46px}.screen{box-shadow:0 0 0 1px #a18560,0 20px 70px #0008}.overlay{background:linear-gradient(90deg,#101923f5,#101923c9)}.primary{background:#b36951;border-bottom-color:#693d35}.heading .eyebrow{color:#dab481}
+/* Cinematic controls share the existing warm gold / indigo interface. */
+.cinema-skip{position:absolute;right:10px;bottom:8px;z-index:3;background:#101923;color:#eed9b5;min-height:32px}.cinema-skip[hidden]{display:none}.cinematic .controls{visibility:hidden}.controls .act{gap:4px}.controls .act button{width:48px;font-size:12px}.controls button:disabled{opacity:.4}.save-dialog{max-width:min(90vw,500px);background:#16212d;border:1px solid #bba17a;color:#efdec1;padding:24px;font:20px 'VT323',monospace}.save-dialog::backdrop{background:#080f18cc}.save-dialog h2{font-size:20px}.hud{gap:5px}.sidebuttons{gap:3px}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:600px){.hud #status{font-size:11px}.hud .small{padding:3px 5px;font-size:11px}}
