@@ -1,0 +1,66 @@
+<!-- Page structure, game canvas, overlays and accessible controls. -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100e16">
+<title>Shadow of the Exile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+<header>
+<div class="logo">SHADOW <span>✦</span> OF THE EXILE</div>
+<div class="topright">JAPAN · 1185</div>
+</header>
+<div class="heading">
+<div>
+<div class="eyebrow">A tale of honour &amp; steel</div>
+<h1>SHADOW OF THE EXILE</h1>
+</div>
+<div class="chapter" id="chapter">PROLOGUE</div>
+</div>
+<div class="screen">
+<canvas id="game" width="960" height="540" aria-label="Side scrolling samurai action game">
+</canvas>
+<div class="overlay" id="overlay">
+<div class="overlay-content">
+<div class="label" id="label">
+</div>
+<h2 id="title">
+</h2>
+<p id="story">
+</p>
+<button class="primary" id="start">BEGIN</button>
+</div>
+</div>
+</div>
+<div class="hud">
+<span id="status">A warrior without a name.</span>
+<div class="sidebuttons">
+<button class="small" id="toggle">TOUCH CONTROLS</button>
+<button class="small" id="restart">RESTART</button>
+</div>
+</div>
+<div class="controls">
+<div class="pad">
+<button data-key="left" aria-label="Move left">◀</button>
+<button data-key="right" aria-label="Move right">▶</button>
+</div>
+<div class="act">
+<button data-key="jump" aria-label="Jump">JUMP</button>
+<button class="attack" data-key="attack" aria-label="Attack">SLASH</button>
+</div>
+</div>
+<div class="footer">
+<span class="deskhint">
+<span class="key">← → / A D</span> MOVE &nbsp; <span class="key">↑ / W / SPACE</span> JUMP &nbsp; <span class="key">J / K</span> SLASH &nbsp; <span class="key">SHIFT / L</span> DASH</span>
+<span class="mobilehint">HOLD TO MOVE · JUMP · HOLD SLASH · TAP DASH</span>
+<span>FICTION INSPIRED BY MEDIEVAL JAPAN</span>
+</div>
+</main>
+<script src="game.js" defer>
+</script>
+</body>
+</html>
