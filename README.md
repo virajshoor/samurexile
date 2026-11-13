@@ -18,7 +18,7 @@ A compact, retro-inspired hack-and-slash game about Ren, an exiled samurai who r
 - **Invulnerable dash** — evade a telegraphed attack, cross through an enemy and counterattack.
 - **500 sequential levels across ten story arcs** — three waves per level, with a captain every 50 levels and health recovery between waves.
 - **Arc captains and a final commander** — more health, faster attacks and a dedicated boss health bar.
-- **Animated canvas artwork** — distinct scenery, articulated characters, trailing scarves, sword arcs, sparks and dash afterimages. No raster assets required.
+- **Animated canvas artwork** — ten arc settings, articulated characters, trailing scarves, sword arcs, sparks and dash afterimages. No raster assets required.
 - **Chapter checkpoints** — browser storage remembers the level reached and completion.
 - **Mobile support** — automatic touch controls, multitouch input, landscape layout and safe-area padding.
 
@@ -69,3 +69,24 @@ Change the ten story arcs and five story beats in `arcs` and `beats`, wave compo
 ## Campaign structure
 
 The campaign contains 500 sequential, rule-generated encounters arranged into ten connected arcs of 50 levels. Story text advances in five beats per arc and every 50th level features a captain. Enemy composition and health scale gradually; the three scenery themes repeat across arcs. These are generated variations, not 500 individually authored maps or narrative scenes. Progress is saved at level boundaries; retry starts the current level.
+
+## Campaign art direction
+
+All environments use the original muted indigo, warm lantern light, geometric silhouettes and pixel-aligned drawing style. Decorative landmarks remain behind the fixed combat floor. Level art does not change movement speed, gravity, sword reach, combo timing or dash invulnerability.
+
+| Levels | Setting | Story landmark |
+|---|---|---|
+| 1–50 | Bamboo refuge | Stolen red seal |
+| 51–100 | Lantern village | Courier signals |
+| 101–150 | River crossing | Ledger crate and ferry |
+| 151–200 | Ash monastery | Bell and witness refuge |
+| 201–250 | Northern pass | Snow, pines and road banner |
+| 251–300 | Mask quarter | Hanging counterfeit masks |
+| 301–350 | Silent harbour | Fleet sails and dock posts |
+| 351–400 | Council courtyard | Red pillars and heraldry |
+| 401–450 | Banner siege | Fire braziers and rebel standards |
+| 451–500 | Dawn gate | Gold standards and rising sun |
+
+Enemy uniforms follow the local palette; Ren retains his blue robes and red scarf for easy recognition. Snow and ember particles are decorative. The ten settings are authored procedural artwork, reused with decorative variations across their 50 levels.
+
+Review checks rendered all 500 backgrounds and exercised combo damage, dash timing, level transitions and final completion saving. These checks do not replace playtesting on physical mobile devices.
